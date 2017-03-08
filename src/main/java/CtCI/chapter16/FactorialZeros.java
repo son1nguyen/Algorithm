@@ -28,7 +28,7 @@ public class FactorialZeros {
 
     }
 
-    public static int countZeros(int num) {
+    private static int countZeros(int num) {
         int count = 0;
         for (int i = 1; i <= num; i++) {
             count += count5(i);
@@ -36,7 +36,7 @@ public class FactorialZeros {
         return count;
     }
 
-    public static int count5(int num) {
+    private static int count5(int num) {
         int count = 0;
         while (num % 5 == 0) {
             count++;

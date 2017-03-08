@@ -14,7 +14,7 @@ public class OneAway {
         System.out.println(isOneEditAway("pale", "bae"));
     }
 
-    public static boolean isOneEditAway(String s1, String s2) {
+    private static boolean isOneEditAway(String s1, String s2) {
         if (s1 == null && s2 == null) return true;
         if (s1 == null || s2 == null) return false;
 

@@ -11,7 +11,7 @@ public class IsUnique {
         System.out.println(isUnique("aaaaaaa"));
     }
 
-    public static boolean isUnique(String s) {
+    private static boolean isUnique(String s) {
         if (s.length() > 256) return false;
 
         boolean[] checkList = new boolean[256];

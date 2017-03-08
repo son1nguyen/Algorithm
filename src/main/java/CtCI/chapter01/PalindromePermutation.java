@@ -16,7 +16,7 @@ public class PalindromePermutation {
         System.out.println(isPermutationOfPalindrome("tactc oapapa"));
     }
 
-    public static boolean isPermutationOfPalindrome(String phrase) {
+    private static boolean isPermutationOfPalindrome(String phrase) {
         if (phrase == null) return false;
         if (phrase.length() <= 1) return true;
 

@@ -15,7 +15,7 @@ public class SmallestDifference {
         System.out.println(result[0] + " " + result[1]);
     }
 
-    public static int[] smallestDifference(int[] arr1, int[] arr2) {
+    private static int[] smallestDifference(int[] arr1, int[] arr2) {
         if (arr1 == null || arr2 == null) return null;
 
         Arrays.sort(arr1);

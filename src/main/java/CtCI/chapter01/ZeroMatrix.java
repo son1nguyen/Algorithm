@@ -25,7 +25,7 @@ public class ZeroMatrix {
         }
     }
 
-    public static void setZeros() {
+    private static void setZeros() {
         Set<Integer> rows = new HashSet<>();
         Set<Integer> cols = new HashSet<>();
 

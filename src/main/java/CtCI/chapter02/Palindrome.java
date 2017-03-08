@@ -19,7 +19,7 @@ public class Palindrome {
         System.out.println(isPalindrome(head));
     }
 
-    public static boolean isPalindrome(LinkedListNode head) {
+    private static boolean isPalindrome(LinkedListNode head) {
         if (head == null || head.next == null) return true;
 
         Stack<LinkedListNode> stack = new Stack<>();

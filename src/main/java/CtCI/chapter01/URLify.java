@@ -16,7 +16,7 @@ public class URLify {
     }
 
     // Assume string has sufficient free space at the end
-    public static void replaceSpaces(char[] str, int trueLength) {
+    private static void replaceSpaces(char[] str, int trueLength) {
         int spaceCount = 0, index, i = 0;
         for (i = 0; i < trueLength; i++) {
             if (str[i] == ' ') {
@@ -38,7 +38,7 @@ public class URLify {
         }
     }
 
-    public static int findLastCharacter(char[] str) {
+    private static int findLastCharacter(char[] str) {
         for (int i = str.length - 1; i >= 0; i--) {
             if (str[i] != ' ') {
                 return i;

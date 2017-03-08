@@ -25,7 +25,7 @@ public class SumList {
         }
     }
 
-    public static LinkedListNode addLists(LinkedListNode l1, LinkedListNode l2, int carry) {
+    private static LinkedListNode addLists(LinkedListNode l1, LinkedListNode l2, int carry) {
         if (l1 == null && l2 == null && carry == 0) {
             return null;
         }

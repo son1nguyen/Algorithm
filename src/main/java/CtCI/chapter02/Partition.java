@@ -26,7 +26,7 @@ public class Partition {
         }
     }
 
-    public static LinkedListNode partition(LinkedListNode head, int partition) {
+    private static LinkedListNode partition(LinkedListNode head, int partition) {
         if (head == null) return null;
 
         LinkedListNode smaller = null;

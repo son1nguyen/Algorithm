@@ -14,7 +14,7 @@ public class CheckPermutation {
         System.out.println(sortingSolution(null, "a"));
     }
 
-    public static boolean sortingSolution(String s1, String s2) {
+    private static boolean sortingSolution(String s1, String s2) {
         if (s1 == null && s2 == null) return true;
         if (s1 == null || s2 == null) return false;
         if (s1.length() != s2.length()) return false;
