@@ -18,7 +18,7 @@ public class TripleStep {
         System.out.println(countWaysDynamically(22) + " = " + (System.currentTimeMillis() - start) + " ms");
     }
 
-    public static int countWays(int steps) {
+    private static int countWays(int steps) {
         if (steps < 0) {
             return 0;
         } else if (steps == 0) {
@@ -30,7 +30,7 @@ public class TripleStep {
                 countWays(steps - 3);
     }
 
-    public static int countWaysDynamically(int steps) {
+    private static int countWaysDynamically(int steps) {
         if (steps < 0) {
             return 0;
         } else if (steps == 0) {

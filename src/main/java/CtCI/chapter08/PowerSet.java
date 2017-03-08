@@ -22,9 +22,13 @@ public class PowerSet {
             System.out.println();
         }
         System.out.println(subsets.size());
+        System.out.println();
+
+        boolean[] set = new boolean[3];
+        printAllSubset(set, 0);
     }
 
-    public static List<List<Integer>> getSubsets(List<Integer> set, int index) {
+    private static List<List<Integer>> getSubsets(List<Integer> set, int index) {
         List<List<Integer>> allSubsets = null;
 
         if (set.size() == index) {
@@ -44,5 +48,21 @@ public class PowerSet {
             allSubsets.addAll(moreSubsets);
         }
         return allSubsets;
+    }
+
+    private static void printAllSubset(boolean[] elements, int currentIndex) {
+        if (currentIndex == elements.length) {
+            for (boolean element : elements) {
+                System.out.print((element) ? "1 " : "0 ");
+            }
+            System.out.println();
+            return;
+        }
+
+        elements[currentIndex] = false;
+        printAllSubset(elements, currentIndex + 1);
+
+        elements[currentIndex] = true;
+        printAllSubset(elements, currentIndex + 1);
     }
 }

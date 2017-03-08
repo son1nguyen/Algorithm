@@ -18,7 +18,7 @@ public class Fibonacci {
         System.out.println(fibonacciDynamically(40) + " = " + (System.currentTimeMillis() - start) + " ms");
     }
 
-    public static int fibonacci(int position) {
+    private static int fibonacci(int position) {
         if (position == 0) {
             return 0;
         } else if (position == 1) {
@@ -28,7 +28,7 @@ public class Fibonacci {
         return fibonacci(position - 1) + fibonacci(position - 2);
     }
 
-    public static int fibonacciDynamically(int position) {
+    private static int fibonacciDynamically(int position) {
         if (position == 0) {
             return 0;
         } else if (position == 1) {

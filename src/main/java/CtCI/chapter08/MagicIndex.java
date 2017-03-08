@@ -10,7 +10,7 @@ public class MagicIndex {
         System.out.println(magicIndex(arr, 0, 4));
     }
 
-    public static int magicIndex(int[] arr, int start, int end) {
+    private static int magicIndex(int[] arr, int start, int end) {
         if (start > end) {
             return -1;
         }
