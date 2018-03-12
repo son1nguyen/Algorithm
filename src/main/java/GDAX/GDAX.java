@@ -56,7 +56,7 @@ public class GDAX {
             insertTradeHistory(tradeList, ltc_insert, "LTC-USD");
 
             logger.info("----------------------------------------");
-            Thread.sleep(15000L);
+            Thread.sleep(5000L);
         }
     }
 
