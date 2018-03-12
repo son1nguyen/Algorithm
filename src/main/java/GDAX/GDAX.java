@@ -3,7 +3,6 @@ package GDAX;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,6 +11,7 @@ import java.net.URL;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by sonnguyen on 3/11/18.
@@ -34,7 +34,8 @@ public class GDAX {
             "(?, ?, ?, ?, ?)";
 
     public static void main(String[] args) throws Exception {
-
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s %2$s %5$s%6$s%n");
         connectToDatabase("jdbc:mysql://10.10.76.100:3306/gdax", "root", "a");
 
         while (true) {
@@ -54,6 +55,7 @@ public class GDAX {
             tradeList = fetchTradeHistory("LTC-USD");
             insertTradeHistory(tradeList, ltc_insert, "LTC-USD");
 
+            logger.info("----------------------------------------");
             Thread.sleep(120000L);
         }
     }
