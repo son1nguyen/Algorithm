@@ -56,7 +56,7 @@ public class GDAX {
             insertTradeHistory(tradeList, ltc_insert, "LTC-USD");
 
             logger.info("----------------------------------------");
-            Thread.sleep(60000L);
+            Thread.sleep(15000L);
         }
     }
 
@@ -103,7 +103,7 @@ public class GDAX {
         ObjectMapper mapper = new ObjectMapper();
         List<Trade> trades = mapper.readValue(response.toString(),
                 mapper.getTypeFactory().constructCollectionType(List.class, Trade.class));
-        logger.info("Fetched " + trades.size() + " " + cryptoType + " records");
+        logger.info("Fetched " + trades.size() + " " + cryptoType);
         return trades;
     }
 
