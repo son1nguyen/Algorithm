@@ -40,21 +40,29 @@ public class GDAX {
 
         while (true) {
             //BTC
-            List<Trade> tradeList = fetchTradeHistory("BTC-USD");
-            insertTradeHistory(tradeList, btc_insert, "BTC-USD");
+            List<Trade> btcList = fetchTradeHistory("BTC-USD");
+            int btcInsertResult = insertTradeHistory(btcList, btc_insert, "BTC-USD");
 
             //BCH
-            tradeList = fetchTradeHistory("BCH-USD");
-            insertTradeHistory(tradeList, bch_insert, "BCH-USD");
+            List<Trade> bchList = fetchTradeHistory("BCH-USD");
+            int bchInsertResult = insertTradeHistory(bchList, bch_insert, "BCH-USD");
 
             //ETH
-            tradeList = fetchTradeHistory("ETH-USD");
-            insertTradeHistory(tradeList, eth_insert, "ETH-USD");
+            List<Trade> ethList = fetchTradeHistory("ETH-USD");
+            int ethInsertResult = insertTradeHistory(ethList, eth_insert, "ETH-USD");
 
             //LTC
-            tradeList = fetchTradeHistory("LTC-USD");
-            insertTradeHistory(tradeList, ltc_insert, "LTC-USD");
+            List<Trade> ltcList = fetchTradeHistory("LTC-USD");
+            int ltcInsertResult = insertTradeHistory(ltcList, ltc_insert, "LTC-USD");
 
+            logger.info("Fetch " + btcList.size() + " BTC-USD, "
+                    + bchList.size() + " BCH-USD, "
+                    + ethList.size() + " ETH-USD, "
+                    + ltcList.size() + " LTC-USD");
+            logger.info("Insert +" + btcInsertResult + " BTC-USD, +"
+                    + bchInsertResult + " BCH-USD, +"
+                    + ethInsertResult + " ETH-USD, +"
+                    + ltcInsertResult + " LTC-USD");
             logger.info("----------------------------------------");
             Thread.sleep(5000L);
         }
@@ -103,12 +111,11 @@ public class GDAX {
         ObjectMapper mapper = new ObjectMapper();
         List<Trade> trades = mapper.readValue(response.toString(),
                 mapper.getTypeFactory().constructCollectionType(List.class, Trade.class));
-        logger.info("Fetched " + trades.size() + " " + cryptoType);
         return trades;
     }
 
-    private static void insertTradeHistory(List<Trade> tradeList,
-                                           String insertStatement, String cryptoType) throws SQLException {
+    private static int insertTradeHistory(List<Trade> tradeList,
+                                          String insertStatement, String cryptoType) throws SQLException {
         PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(insertStatement);
         for (Trade trade : tradeList) {
             preparedStatement.setInt(1, trade.getTrade_id());
@@ -125,8 +132,7 @@ public class GDAX {
         for (int update : numUpdates) {
             if (update == 1) count++;
         }
-        logger.info("Inserted " + count + " " + cryptoType);
-
+        return count;
     }
 }
 
