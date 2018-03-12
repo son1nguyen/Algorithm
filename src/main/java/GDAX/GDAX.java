@@ -33,42 +33,49 @@ public class GDAX {
             "(trade_id, time, price, size, side) VALUES " +
             "(?, ?, ?, ?, ?)";
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
         System.setProperty("java.util.logging.SimpleFormatter.format",
                 "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS %4$s %2$s %5$s%6$s%n");
-        connectToDatabase("jdbc:mysql://10.10.76.100:3306/gdax", "root", "a");
-
         while (true) {
-            //BTC
-            List<Trade> btcList = fetchTradeHistory("BTC-USD");
-            int btcInsertResult = insertTradeHistory(btcList, btc_insert, "BTC-USD");
+            try {
+                if (connection == null || connection.isClosed()) {
+                    connectToDatabase("jdbc:mysql://10.10.76.100:3306/gdax", "root", "a");
+                }
 
-            //BCH
-            List<Trade> bchList = fetchTradeHistory("BCH-USD");
-            int bchInsertResult = insertTradeHistory(bchList, bch_insert, "BCH-USD");
+                //BTC
+                List<Trade> btcList = fetchTradeHistory("BTC-USD");
+                int btcInsertResult = insertTradeHistory(btcList, btc_insert, "BTC-USD");
 
-            //ETH
-            List<Trade> ethList = fetchTradeHistory("ETH-USD");
-            int ethInsertResult = insertTradeHistory(ethList, eth_insert, "ETH-USD");
+                //BCH
+                List<Trade> bchList = fetchTradeHistory("BCH-USD");
+                int bchInsertResult = insertTradeHistory(bchList, bch_insert, "BCH-USD");
 
-            //LTC
-            List<Trade> ltcList = fetchTradeHistory("LTC-USD");
-            int ltcInsertResult = insertTradeHistory(ltcList, ltc_insert, "LTC-USD");
+                //ETH
+                List<Trade> ethList = fetchTradeHistory("ETH-USD");
+                int ethInsertResult = insertTradeHistory(ethList, eth_insert, "ETH-USD");
 
-            logger.info("Fetch " + btcList.size() + " BTC-USD, "
-                    + bchList.size() + " BCH-USD, "
-                    + ethList.size() + " ETH-USD, "
-                    + ltcList.size() + " LTC-USD");
-            logger.info("Insert +" + btcInsertResult + " BTC-USD, +"
-                    + bchInsertResult + " BCH-USD, +"
-                    + ethInsertResult + " ETH-USD, +"
-                    + ltcInsertResult + " LTC-USD");
-            logger.info("----------------------------------------");
-            Thread.sleep(5000L);
+                //LTC
+                List<Trade> ltcList = fetchTradeHistory("LTC-USD");
+                int ltcInsertResult = insertTradeHistory(ltcList, ltc_insert, "LTC-USD");
+
+                logger.info("Fetch " + btcList.size() + " BTC-USD, "
+                        + bchList.size() + " BCH-USD, "
+                        + ethList.size() + " ETH-USD, "
+                        + ltcList.size() + " LTC-USD");
+                logger.info("Insert +" + btcInsertResult + " BTC-USD, +"
+                        + bchInsertResult + " BCH-USD, +"
+                        + ethInsertResult + " ETH-USD, +"
+                        + ltcInsertResult + " LTC-USD");
+                logger.info("----------------------------------------");
+                Thread.sleep(5000L);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
-    private static void connectToDatabase(String url, String user, String password) throws Exception {
+    private static void connectToDatabase(String url, String user, String password)
+            throws ClassNotFoundException, SQLException {
         System.out.println("-------- MySQL JDBC Connection Testing ------------");
         Class.forName("com.mysql.jdbc.Driver");
 
