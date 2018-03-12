@@ -96,7 +96,7 @@ public class GDAX {
         con.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36");
 
         int responseCode = con.getResponseCode();
-        logger.info("Sending 'GET' request to URL : " + url + " " + responseCode);
+//        logger.info("Sending 'GET' request to URL : " + url + " " + responseCode);
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
