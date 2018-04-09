@@ -36,7 +36,6 @@ public class ReverseWordsInAStringII {
         // 1, reverse the whole sentence
         reverse(s, 0, s.length - 1);
 
-
         // 2, reverse each word
         int start = 0;
         for (int i = 0; i < s.length; i++) {
