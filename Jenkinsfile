@@ -22,9 +22,8 @@ pipeline {
                 }
                 stage('Thread 2') {
                 	steps {
-                    	   pwd
-                           ls -lah
-                           
+                    	    sh 'pwd'
+                            sh 'ls -lah'
                 	}
                 }
             }
