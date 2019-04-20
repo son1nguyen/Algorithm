@@ -14,11 +14,15 @@ pipeline {
         }
         stage('Parallel tasks') {
             parallel {
-                steps {
-                    echo 'Thread 1'
+                stage('Thread 1') {
+                	steps {
+                    	echo 'Thread 1'
+                	}
                 }
-                steps {
-                    echo 'Thread 2'
+                stage('Thread 2') {
+                	steps {
+                    	echo 'Thread 2'
+                	}
                 }
             }
         }
