@@ -17,7 +17,7 @@ pipeline {
                 stage('Thread 1') {
                 	steps {
                     	    echo 'Thread 1'
-                	    pip list
+                	    sh 'pip list'
                         }
                 }
                 stage('Thread 2') {
