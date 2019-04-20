@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('Build') {
-            step {
+            steps {
                 sh 'mvn clean package'
             }
             post {
@@ -14,16 +14,16 @@ pipeline {
         }
         stage('Parallel tasks') {
             parallel {
-                step {
+                steps {
                     echo 'Thread 1'
                 }
-                step {
+                steps {
                     echo 'Thread 2'
                 }
             }
         }
         stage('Continue serial tasks') {
-            step {
+            steps {
             	echo 'Continue with serial task'
             }
         }
