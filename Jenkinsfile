@@ -16,12 +16,15 @@ pipeline {
             parallel {
                 stage('Thread 1') {
                 	steps {
-                    	echo 'Thread 1'
-                	}
+                    	    echo 'Thread 1'
+                	    pip list
+                        }
                 }
                 stage('Thread 2') {
                 	steps {
-                    	echo 'Thread 2'
+                    	   pwd
+                           ls -lah
+                           
                 	}
                 }
             }
